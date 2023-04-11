@@ -1,14 +1,14 @@
 pkgname=macopix-cloudef
-pkgver=1.7.4+cloudef8
-pkgrel=2
+pkgver=1.7.4+cloudef163
+pkgrel=1
 pkgdesc="Mascot Constructive Pilot for X – Cloudef's fork"
-url="https://github.com/Cloudef/macopix-fork"
+url="https://github.com/chimari/MaCoPiX.git"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 depends=(gtk2 openssl)
 provides=(macopix=$pkgver)
 conflicts=(macopix)
-source=("git+https://github.com/Cloudef/macopix-fork"
+source=("git+https://github.com/chimari/MaCoPiX"
 	"http://rosegray.sakura.ne.jp/macopix/macopix-mascot-HxB-euc-ja-0.30.tar.gz"
 	"http://rosegray.sakura.ne.jp/macopix/macopix-mascot-marimite-euc-ja-2.20.tar.gz"
 	"http://rosegray.sakura.ne.jp/macopix/macopix-mascot-cosmos-euc-ja-1.02.tar.gz"
@@ -32,18 +32,18 @@ sha256sums=('SKIP'
             'd365e516557fd6f3826d9086f7348c3e444256371cac87f901078ece7c118454')
 
 pkgver() {
-	cd macopix-fork
+	cd MaCoPiX
 	echo 1.7.4+cloudef$(git rev-list --count HEAD)
 }
 
 build() {
-	cd macopix-fork
+	cd MaCoPiX
 	./configure --prefix=/usr
 	make LDFLAGS+="-lX11"
 }
 
 package() {
-	cd macopix-fork
+	cd MaCoPiX
 	make DESTDIR="$pkgdir" install
 	mkdir -p "$pkgdir"/usr/share/macopix/pixmap
 
