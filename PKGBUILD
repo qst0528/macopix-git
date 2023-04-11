@@ -1,7 +1,7 @@
-pkgname=macopix-cloudef
-pkgver=1.7.4+cloudef163
+pkgname=macopix-git
+pkgver=3.4.0r163.c11b532
 pkgrel=1
-pkgdesc="Mascot Constructive Pilot for X – Cloudef's fork"
+pkgdesc="Mascot Constructive Pilot for X"
 url="https://github.com/chimari/MaCoPiX.git"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -32,8 +32,8 @@ sha256sums=('SKIP'
             'd365e516557fd6f3826d9086f7348c3e444256371cac87f901078ece7c118454')
 
 pkgver() {
-	cd MaCoPiX
-	echo 1.7.4+cloudef$(git rev-list --count HEAD)
+  cd MaCoPiX
+  printf "3.4.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
